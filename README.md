@@ -28,10 +28,9 @@
 
 * **Версия Minecraft:** 1.20.1 (Forge `47.4.x`)
 * **Java:** JDK 17
-
 * 
-* ```bash
 # Сборка готового .jar файла (с оптимизацией под ОЗУ)
+```
 ./gradlew build --no-daemon --max-workers=2
 ```
 Готовый мод появится по пути `build/libs/RtCoD_races-1.2.0.jar`.
