@@ -1,0 +1,26 @@
+# Кэш и сборка Gradle
+.gradle/
+build/
+bin/
+out/
+
+# Настройки IDE (IntelliJ IDEA, VS Code, Eclipse)
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings/
+
+# Запуски тестового клиента/сервера и логи
+run/
+run-data/
+logs/
+crash-reports/
+*.log
+
+# Вспомогательные локальные скрипты
+icons.py
+__pycache__/
