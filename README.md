@@ -28,7 +28,7 @@
 
 * **Версия Minecraft:** 1.20.1 (Forge `47.4.x`)
 * **Java:** JDK 17
-* 
+  
 # Сборка готового .jar файла (с оптимизацией под ОЗУ)
 ```
 ./gradlew build --no-daemon --max-workers=2
