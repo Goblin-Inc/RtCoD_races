@@ -1,8 +1,10 @@
 <div align="center">
 
+🌐 **Language:** **English** | [Русский (README_Ru.md)](README_Ru.md)
+
 # ⚔️ RtCoD Races (`rtcod_races`)
 
-**Глобальный RPG-мод на 20 уникальных рас, реальное 3D-масштабирование модели и хитбоксов, пассивные ауры и активные боевые способности для Minecraft Forge 1.20.1**
+**Full-scale RPG mod adding 20 playable races, true 3D player model & hitbox scaling, passive auras, and active combat abilities for Minecraft Forge 1.20.1**
 
 [![Minecraft](https://img.shields.io/badge/Minecraft-1.20.1-62B47A?style=for-the-badge&logo=minecraft&logoColor=white)](https://files.minecraftforge.net/)
 [![Forge](https://img.shields.io/badge/Forge-47.4.13-DFA86A?style=for-the-badge)](https://files.minecraftforge.net/)
@@ -17,132 +19,132 @@
 
 ---
 
-## 📖 О проекте
+## 📖 Overview
 
-**RtCoD Races** — кастомный клиент-серверный мод для проекта **RtCoD (Return to Chronicles of Darkness)** на **Minecraft Forge 1.20.1**, полностью перерабатывающий систему создания и прогрессии персонажа.
+**RtCoD Races** is a custom client-server RPG mod developed for **RtCoD (Return to Chronicles of Darkness)** on **Minecraft Forge 1.20.1**, overhauling character creation and progression.
 
-При первом входе на сервер перед игроком открывается интерактивное графическое меню (`RaceSelectionScreen`) с кастомными 16×16 пиксель-арт иконками рас, карточками характеристик, списком пассивных эффектов и описанием активного умения.
+When joining a server for the first time, players are greeted by an interactive graphical menu (`RaceSelectionScreen`) featuring custom 16×16 pixel-art race icons, stat breakdowns, passive trait lists, and active skill descriptions.
 
-### ✨ Ключевые возможности
-- **20 играбельных фэнтези-рас**: от классических Людей, Эльфов и Дварфов до Вампиров, Демонов, Небожителей, Драконорождённых, Автоматонов и Зверолюдов (Бастет, Ликантроп, Кицунэ, Минотавр, Арахнид).
-- **Честный 3D-рост персонажа (`0.75x` – `1.30x`)**:
-  - Визуальное масштабирование рендера модели через `RenderPlayerEvent.Pre` (`PoseStack.scale`).
-  - Физическое изменение хитбокса и высоты глаз (`EyeHeight`) через `EntityEvent.Size` (Дварфы, Гоблины и Полурослики проходят в проёмы 1.5 блока, а Голиафы, Орки и Минотавры возвышаются над полем боя).
-- **Активные расовые способности по клавише `[R]`**: рывки, телепортация в тень, огненное дыхание, вампирский укус, паучий прыжок, берсерк, иллюзорный двойник, каменный бастион и др.
-- **Интеграция с `Iron's Spells 'n Spellbooks`**: мягкая (soft-dependency) привязка бонусов к `max_mana`, `mana_regen` и `spell_power` для магических рас.
-- **Персистентность через Forge Capabilities**: выбранная раса сохраняется в NBT игрока, автоматически переносится после смерти (`PlayerEvent.Clone`) и синхронизируется по сети (`PacketHandler`).
+### ✨ Key Features
+- **20 Playable Fantasy Races**: ranging from classic Humans, Elves, and Dwarves to Vampires, Demons, Celestials, Dragonborn, Automatons, and Beastfolk (Bastet, Lycanthrope, Kitsune, Minotaur, Arachnid).
+- **True 3D Character Scaling (`0.75x` – `1.30x`)**:
+  - Visual player model scaling via `RenderPlayerEvent.Pre` (`PoseStack.scale`).
+  - Physical hitbox and eye-height (`EyeHeight`) adjustment via `EntityEvent.Size` (Dwarves, Goblins, and Halflings can walk through 1.5-block gaps, while Goliaths, Orcs, and Minotaurs tower over the battlefield).
+- **Active Racial Abilities on `[R]`**: dashes, shadow blinks, dragon breath, vampiric bite, spider leap, berserker rage, illusory decoy, stone bastion, and more.
+- **`Iron's Spells 'n Spellbooks` Integration**: soft-dependency attribute bonuses for `max_mana`, `mana_regen`, and `spell_power` on spellcasting races.
+- **Persistent Forge Capabilities**: chosen race data is stored in player NBT, automatically preserved across deaths (`PlayerEvent.Clone`), and synced to all nearby clients (`PacketHandler`).
 
 ---
 
-## 🧬 Таблица всех 20 рас
+## 🧬 All 20 Playable Races
 
-| # | Раса (`ID`) | ❤️ Здоровье | ⚡ Скорость | 🗡️ Атака | 🛡️ Броня | 📏 Рост | 🌟 Пассивные особенности | 🔥 Активная способность `[R]` |
+| # | Race (`ID`) | ❤️ Health | ⚡ Speed | 🗡️ Attack | 🛡️ Armor | 📏 Scale | 🌟 Passive Traits | 🔥 Active Ability `[R]` |
 |:-:|:---|:---:|:---:|:---:|:---:|:---:|:---|:---|
-| 1 | **Человек** (`human`) | `20 HP` | `100%` | `100%` | `0` | `1.00x` | +25% к получаемому опыту, +2 Удачи | **Воодушевление** *(КД 60с)* — Регенерация II и Скорость I союзникам в радиусе 8 блоков |
-| 2 | **Высший Эльф** (`high_elf`) | `18 HP` | `108%` | `95%` | `0` | `1.06x` | +40 Макс. Маны, +20% реген маны, ночное зрение | **Астральный шаг** *(КД 25с)* — Мгновенный блинк на 10 блоков вперёд по взгляду |
-| 3 | **Лесной Эльф** (`wood_elf`) | `18 HP` | `115%` | `100%` | `0` | `1.03x` | +25% урона из луков, бесшумный шаг в лесу | **Ветряной залп** *(КД 30с)* — Отскок назад + Невидимость и Скорость II на 6 сек |
-| 4 | **Дроу / Тёмный Эльф** (`drow`) | `18 HP` | `110%` | `105%` | `0` | `1.02x` | Ночное зрение, иммунитет к слепоте, слабость на солнце | **Покров Тьмы** *(КД 40с)* — Ослепляет врагов в радиусе 6 блоков и даёт Невидимость |
-| 5 | **Дварф** (`dwarf`) | `26 HP` | `90%` | `110%` | `+4` | `0.82x` | Спешка II под землёй, +30% стойкости к отбрасыванию | **Каменный Бастион** *(КД 75с)* — Сопротивление III и Огнестойкость на 10 сек |
-| 6 | **Орк** (`orc`) | `28 HP` | `98%` | `125%` | `+2` | `1.18x` | Повышенный урон в ближнем бою, голод тратится быстрее | **Кровавый рёв** *(КД 60с)* — Сила II и Скорость II на 12 сек, отталкивает врагов |
-| 7 | **Гоблин** (`goblin`) | `16 HP` | `122%` | `90%` | `0` | `0.75x` | Проходит в проёмы 1.5 блока, +20% скорости атаки | **Грязный трюк** *(КД 25с)* — Рывок вперёд + Отравление и Замедление цели |
-| 8 | **Демон** (`demon`) | `24 HP` | `105%` | `115%` | `+2` | `1.12x` | Полный иммунитет к огню и лаве, урон от воды/дождя | **Адское кольцо** *(КД 45с)* — Огненный взрыв вокруг игрока и поджог врагов на 8 сек |
-| 9 | **Вампир** (`vampire`) | `22 HP` | `112%` | `110%` | `0` | `1.02x` | Вампиризм (15% от урона ночью), горит на солнце без шлема | **Кровавый укус** *(КД 30с)* — Похищает 6 HP у цели вблизи и накладывает Слабость |
-| 10 | **Нежить** (`undead`) | `24 HP` | `95%` | `105%` | `+2` | `1.00x` | Не тонет, иммунитет к яду и голоду, горит днём | **Могильный холод** *(КД 45с)* — Замораживает и иссушает врагов в радиусе 5 блоков |
-| 11 | **Ликантроп** (`lycanthrope`) | `26 HP` | `115%` | `120%` | `+2` | `1.15x` | Ночью получает Силу I и Регенерацию I, бонус к прыжку | **Звериный рывок** *(КД 20с)* — Длинный прыжок хищника с кровотечением по площади |
-| 12 | **Драконорождённый** (`dragonborn`) | `26 HP` | `100%` | `115%` | `+4` | `1.16x` | Природная чешуя (+4 брони), огнестойкость, +10% силы чар | **Дыхание Дракона** *(КД 40с)* — Конус пламени перед игроком (чистый + огненный урон) |
-| 13 | **Зверолюд Бастет** (`bastet`) | `18 HP` | `120%` | `105%` | `0` | `0.95x` | Полный иммунитет к урону от падения, ночное зрение | **Кошачьи рефлексы** *(КД 30с)* — Уклонение + Скорость III и Прыгучесть III на 8 сек |
-| 14 | **Кицунэ** (`kitsune`) | `18 HP` | `114%` | `95%` | `0` | `0.96x` | +35 Макс. Маны, +15% силы заклинаний, лисий огонь | **лисьи Огни** *(КД 35с)* — Иллюзорный рывок + самонаводящиеся магические сгустки |
-| 15 | **Голиаф** (`goliath`) | `32 HP` | `92%` | `120%` | `+4` | `1.28x` | Иммунитет к обморожению, +50% сопротивления отбрасыванию | **Удар Титана** *(КД 50с)* — Удар по земле, подбрасывающий всех врагов вокруг |
-| 16 | **Автоматон** (`automaton`) | `28 HP` | `90%` | `110%` | `+6` | `1.08x` | Не нуждается в воздухе, иммунитет к яду и иссушению | **Перегрузка ядра** *(КД 60с)* — Электрический щит + Скорость II и Спешка II |
-| 17 | **Небожитель** (`celestial`) | `20 HP` | `105%` | `100%` | `+2` | `1.08x` | Плавное падение при зажатом Shift, бонус к магии Света | **Благословение Света** *(КД 60с)* — Исцеление 8 HP и Золотые сердца себе и союзникам |
-| 18 | **Арахнид** (`arachnid`) | `20 HP` | `110%` | `105%` | `+1` | `1.04x` | Лазание по вертикальным стенам, иммунитет к паутине и яду | **Кокон Ткача** *(КД 30с)* — Обездвиживает цель паутиной и отравляет |
-| 19 | **Полурослик** (`halfling`) | `16 HP` | `112%` | `90%` | `0` | `0.78x` | +3 Удачи, скрытность, сниженный радиус агрессии мобов | **Счастливый случай** *(КД 45с)* — Невидимость + Поглощение II + снятие негативных чар |
-| 20 | **Минотавр** (`minotaur`) | `30 HP` | `102%` | `125%` | `+3` | `1.30x` | Пробивание щитов в спринте, сокрушительный ближний бой | **Таран Лабиринта** *(КД 35с)* — Стремительный таран с оглушением и отбрасыванием |
+| 1 | **Human** (`human`) | `20 HP` | `100%` | `100%` | `0` | `1.00x` | +25% XP gain, +2 Luck | **Inspiration** *(60s CD)* — Grants Regeneration II and Speed I to allies within 8 blocks |
+| 2 | **High Elf** (`high_elf`) | `18 HP` | `108%` | `95%` | `0` | `1.06x` | +40 Max Mana, +20% mana regen, Night Vision | **Astral Step** *(25s CD)* — Instant 10-block blink along look vector |
+| 3 | **Wood Elf** (`wood_elf`) | `18 HP` | `115%` | `100%` | `0` | `1.03x` | +25% bow damage, silent step in forests | **Gale Volley** *(30s CD)* — Backflip leap + Invisibility and Speed II for 6s |
+| 4 | **Drow / Dark Elf** (`drow`) | `18 HP` | `110%` | `105%` | `0` | `1.02x` | Night Vision, Blindness immunity, weakened in direct sunlight | **Shroud of Darkness** *(40s CD)* — Blinds enemies within 6 blocks and grants Invisibility |
+| 5 | **Dwarf** (`dwarf`) | `26 HP` | `90%` | `110%` | `+4` | `0.82x` | Haste II underground, +30% Knockback Resistance | **Stone Bastion** *(75s CD)* — Resistance III and Fire Resistance for 10s |
+| 6 | **Orc** (`orc`) | `28 HP` | `98%` | `125%` | `+2` | `1.18x` | Heavy melee damage bonus, faster hunger depletion | **Blood Roar** *(60s CD)* — Strength II and Speed II for 12s, knocks back nearby foes |
+| 7 | **Goblin** (`goblin`) | `16 HP` | `122%` | `90%` | `0` | `0.75x` | Fits through 1.5-block gaps, +20% attack speed | **Dirty Trick** *(25s CD)* — Forward dash + inflicts Poison and Slowness on target |
+| 8 | **Demon** (`demon`) | `24 HP` | `105%` | `115%` | `+2` | `1.12x` | Complete Fire & Lava immunity, takes damage from water/rain | **Hellfire Ring** *(45s CD)* — Fiery blast around the player, igniting enemies for 8s |
+| 9 | **Vampire** (`vampire`) | `22 HP` | `112%` | `110%` | `0` | `1.02x` | Lifesteal (15% of melee damage at night), burns in sunlight without helmet | **Blood Bite** *(30s CD)* — Drains 6 HP from a nearby target and inflicts Weakness |
+| 10 | **Undead** (`undead`) | `24 HP` | `95%` | `105%` | `+2` | `1.00x` | Cannot drown, immune to Poison & Hunger, burns in daylight | **Grave Chill** *(45s CD)* — Freezes and withers enemies within 5 blocks |
+| 11 | **Lycanthrope** (`lycanthrope`) | `26 HP` | `115%` | `120%` | `+2` | `1.15x` | Gains Strength I & Regeneration I at night, jump boost | **Feral Pounce** *(20s CD)* — Long predator leap inflicting AoE bleed |
+| 12 | **Dragonborn** (`dragonborn`) | `26 HP` | `100%` | `115%` | `+4` | `1.16x` | Natural scales (+4 Armor), Fire Resistance, +10% spell power | **Dragon Breath** *(40s CD)* — Cone of flame in front of the player (true + fire damage) |
+| 13 | **Bastet Beastfolk** (`bastet`) | `18 HP` | `120%` | `105%` | `0` | `0.95x` | Complete fall damage immunity, Night Vision | **Feline Reflexes** *(30s CD)* — Evasion dash + Speed III and Jump Boost III for 8s |
+| 14 | **Kitsune** (`kitsune`) | `18 HP` | `114%` | `95%` | `0` | `0.96x` | +35 Max Mana, +15% spell power, foxfire aura | **Foxfire Orbs** *(35s CD)* — Illusory dash + homing magical wisp projectiles |
+| 15 | **Goliath** (`goliath`) | `32 HP` | `92%` | `120%` | `+4` | `1.28x` | Freeze immunity, +50% Knockback Resistance | **Titan Slam** *(50s CD)* — Ground smash launching all surrounding enemies into the air |
+| 16 | **Automaton** (`automaton`) | `28 HP` | `90%` | `110%` | `+6` | `1.08x` | Does not require air, immune to Poison and Wither | **Core Overdrive** *(60s CD)* — Electric shock shield + Speed II and Haste II |
+| 17 | **Celestial** (`celestial`) | `20 HP` | `105%` | `100%` | `+2` | `1.08x` | Slow falling while sneaking, holy magic bonus | **Blessing of Light** *(60s CD)* — Heals 8 HP and grants Absorption hearts to self and allies |
+| 18 | **Arachnid** (`arachnid`) | `20 HP` | `110%` | `105%` | `+1` | `1.04x` | Climbs vertical walls, immune to cobwebs and poison | **Weaver's Cocoon** *(30s CD)* — Entangles target in cobwebs and applies Poison |
+| 19 | **Halfling** (`halfling`) | `16 HP` | `112%` | `90%` | `0` | `0.78x` | +3 Luck, stealthy, reduced mob detection range | **Lucky Break** *(45s CD)* — Invisibility + Absorption II + cleanses negative effects |
+| 20 | **Minotaur** (`minotaur`) | `30 HP` | `102%` | `125%` | `+3` | `1.30x` | Disables shields while sprinting, crushing melee strikes | **Labyrinth Charge** *(35s CD)* — Unstoppable bull rush that stuns and knocks back foes |
 
 ---
 
-## 🎮 Управление и команды
+## 🎮 Controls & Commands
 
-| Действие / Команда | Описание |Права доступа |
+| Action / Command | Description | Permission |
 |---|---|---|
-| Клавиша **`[R]`** *(настраивается в Controls)* | Активация расовой способности с отображением кулдауна на HUD | Все игроки |
-| `/race` | Открыть меню информации о текущей расе (или выбор расы, если ещё не выбрана) | Все игроки |
-| `/race gui` | Принудительно открыть GUI смены расы | OP (уровень 2+) |
-| `/race set <player> <race_id>` | Назначить игроку указанную расу с мгновенным пересчётом статов и роста | OP (уровень 2+) |
-| `/race reset <player>` | Сбросить расу игрока и открыть ему окно первичного выбора | OP (уровень 2+) |
-| `/race info [player]` | Вывести в чат подробную статистику текущей расы игрока | Все игроки |
+| Key **`[R]`** *(configurable in Controls)* | Trigger racial active ability with HUD cooldown indicator | All players |
+| `/race` | View current race stats (or open race selection screen if none chosen) | All players |
+| `/race gui` | Force-open the race selection GUI | OP (Level 2+) |
+| `/race set <player> <race_id>` | Assign a race to a player and immediately recalculate attributes & 3D scale | OP (Level 2+) |
+| `/race reset <player>` | Reset a player's race and reopen their initial selection screen | OP (Level 2+) |
+| `/race info [player]` | Print detailed statistics of a player's current race in chat | All players |
 
 ---
 
-## 🏗️ Архитектура проекта
+## 🏗️ Project Architecture
 
 ```
 RtCoD_races/
 ├── src/main/java/com/rtcod/races/
-│   ├── RtCoDRacesMod.java          # Точка входа @Mod("rtcod_races"), регистрация шин событий
+│   ├── RtCoDRacesMod.java          # @Mod("rtcod_races") entry point and event bus registration
 │   ├── race/
-│   │   ├── Race.java               # Enum/реестр 20 рас: атрибуты, рост, иконки, описания
-│   │   ├── RaceAttributes.java     # Модификаторы AttributeModifier (HP, Speed, Armor, Attack, Mana)
-│   │   └── RaceAbilityHandler.java # Серверная логика 20 активных способностей и кулдаунов
+│   │   ├── Race.java               # Enum/registry of all 20 races: attributes, scale, icons, lore
+│   │   ├── RaceAttributes.java     # AttributeModifier management (HP, Speed, Armor, Attack, Mana)
+│   │   └── RaceAbilityHandler.java # Server-side execution and cooldown tracking for all 20 active skills
 │   ├── capability/
-│   │   ├── PlayerRaceData.java     # Хранение выбранной расы и таймеров в NBT
-│   │   └── RaceCapability.java     # Регистрация Forge Capability и клонирование при респавне
+│   │   ├── PlayerRaceData.java     # NBT serialization of chosen race and ability cooldowns
+│   │   └── RaceCapability.java     # Forge Capability registration and respawn cloning
 │   ├── client/
-│   │   ├── RaceSelectionScreen.java# Полноэкранный GUI выбора расы с 16x16 иконками и скроллом
-│   │   ├── ClientEvents.java       # Масштабирование рендера модели (RenderPlayerEvent) + HUD
-│   │   └── KeyBindings.java        # Регистрация клавиши [R] (key.rtcod_races.ability)
+│   │   ├── RaceSelectionScreen.java# Fullscreen race selection GUI with 16x16 icons and scrolling
+│   │   ├── ClientEvents.java       # Player model scale rendering (RenderPlayerEvent) + HUD overlay
+│   │   └── KeyBindings.java        # Keybinding registration for [R] (key.rtcod_races.ability)
 │   ├── event/
-│   │   └── CommonEvents.java       # EntityEvent.Size (3D-хитбокс), солнечный ожог, пассивки
+│   │   └── CommonEvents.java       # EntityEvent.Size (3D hitbox), sunlight burn, and passive auras
 │   ├── command/
-│   │   └── RaceCommand.java        # Бригадир-команды /race set, /race reset, /race gui
+│   │   └── RaceCommand.java        # Brigadier commands (/race set, /race reset, /race gui)
 │   └── network/
-│       ├── PacketHandler.java      # Канал SimpleChannel (протокол синхронизации)
-│       ├── SelectRacePacket.java   # C2S пакет выбора расы из GUI
-│       ├── UseAbilityPacket.java   # C2S пакет нажатия клавиши [R]
-│       └── SyncRacePacket.java     # S2C синхронизация расы и масштаба всем клиентам в трекере
+│       ├── PacketHandler.java      # SimpleChannel network protocol
+│       ├── SelectRacePacket.java   # C2S packet sent when choosing a race in GUI
+│       ├── UseAbilityPacket.java   # C2S packet sent on pressing [R]
+│       └── SyncRacePacket.java     # S2C race and 3D scale synchronization across tracking clients
 └── src/main/resources/
     ├── META-INF/mods.toml
     └── assets/rtcod_races/
         ├── lang/ru_ru.json, en_us.json
-        └── textures/gui/races/     # 20 авторских 16x16 пиксель-арт иконок рас
+        └── textures/gui/races/     # 20 custom 16x16 pixel-art race icons
 ```
 
 ---
 
-## 🚀 Установка и сборка
+## 🚀 Installation & Build
 
-### Готовый `.jar` из Releases
-1. Перейдите в раздел [**Releases**](https://github.com/Goblin-Inc/RtCoD_races/releases) и скачайте `rtcod_races-1.2.0.jar`.
-2. Поместите файл в папку `mods/` как на **сервере**, так и в **клиентской сборке** (Forge `1.20.1 - 47.4.13+`).
+### Prebuilt `.jar` from Releases
+1. Go to [**Releases**](https://github.com/Goblin-Inc/RtCoD_races/releases) and download `rtcod_races-1.2.0.jar`.
+2. Drop the file into the `mods/` folder on **both the server and client** (Forge `1.20.1 - 47.4.13+`).
 
-### Сборка из исходников
+### Build from Source
 ```bash
 git clone https://github.com/Goblin-Inc/RtCoD_races.git
 cd RtCoD_races
 ./gradlew build
-# Готовый мод появится в build/libs/rtcod_races-1.2.0.jar
+# Output jar: build/libs/rtcod_races-1.2.0.jar
 ```
 
 ---
 
 ## 📋 Changelog
 
-### `v1.2.0` — Полноценный релиз 20 рас и 3D-масштабирования *(Текущая версия)*
-- **Добавлено**: Расширен ростер рас до **20 уникальных архетипов** (добавлены `bastet`, `kitsune`, `goliath`, `automaton`, `celestial`, `arachnid`, `halfling`, `minotaur`).
-- **Добавлено**: Авторские 16×16 пиксель-арт иконки (`assets/rtcod_races/textures/gui/races/*.png`) для каждой расы в `RaceSelectionScreen`.
-- **Улучшено**: Синхронизация `EntityEvent.Size` и `refreshDimensions()` при смене расы без необходимости перезахода на сервер.
-- **Улучшено**: Мягкая интеграция с атрибутами `Iron's Spells 'n Spellbooks` (`max_mana`, `mana_regen`, `spell_power`).
+### `v1.2.0` — Full 20-Race Roster & 3D Scaling Release *(Current)*
+- **Added**: Expanded the playable roster to **20 unique archetypes** (`bastet`, `kitsune`, `goliath`, `automaton`, `celestial`, `arachnid`, `halfling`, `minotaur`).
+- **Added**: Custom 16×16 pixel-art icons (`assets/rtcod_races/textures/gui/races/*.png`) for every race in `RaceSelectionScreen`.
+- **Improved**: Live `EntityEvent.Size` and `refreshDimensions()` synchronization on race change without relogging.
+- **Improved**: Soft integration with `Iron's Spells 'n Spellbooks` attributes (`max_mana`, `mana_regen`, `spell_power`).
 
-### `v1.1.0` — Активные способности и сетевая синхронизация
-- **Добавлено**: Клавиша `[R]` (`UseAbilityPacket`) и серверный обработчик кулдаунов для активных умений.
-- **Добавлено**: Отображение чужих рас и их 3D-роста у других игроков в мультиплеере (`PlayerEvent.StartTracking`).
-- **Исправлено**: Сохранение выбранной расы при смерти и возвращении из Энда (`PlayerEvent.Clone`).
+### `v1.1.0` — Active Abilities & Multiplayer Sync
+- **Added**: `[R]` ability key (`UseAbilityPacket`) and server-side cooldown manager.
+- **Added**: Multiplayer 3D scale and race synchronization for tracked players (`PlayerEvent.StartTracking`).
+- **Fixed**: Preserving chosen race across death and End dimension travel (`PlayerEvent.Clone`).
 
-### `v1.0.0` — Базовый прототип
-- Первичная реализация Forge Capability, 12 базовых рас, модификаторов здоровья/скорости и команды `/race`.
+### `v1.0.0` — Initial Prototype
+- Core Forge Capability implementation, 12 base races, health/speed modifiers, and `/race` command.
 
 ---
 
 <div align="center">
-Разработано специально для сервера <b>RtCoD</b> • Автор: <a href="https://github.com/Goblin-Inc">@Goblin-Inc</a>
+Designed for the <b>RtCoD</b> server • Author: <a href="https://github.com/Goblin-Inc">@Goblin-Inc</a> • <a href="README_Ru.md">Русская версия</a>
 </div>
